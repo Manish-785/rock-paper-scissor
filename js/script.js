@@ -40,32 +40,39 @@ const paper = document.querySelector('#paper');
 const scissor = document.querySelector('#scissor');
 const result = document.querySelector('#result');
 
-rock.addEventListener('click',function(){
-    getPlayerChoice='ROCK';
+function Game(getPlayerChoice){
     outcome = playRound(getPlayerChoice,getComputerChoice());
     result.textContent = outcome;
+
     if(outcome.includes('Lose!'))
         computerscore.textContent = parseInt(computerscore.textContent)+1;
-        if(outcome.includes('Won!'))
+    else if(outcome.includes('Won!'))
         userscore.textContent = parseInt(userscore.textContent)+1;
+
+    if(parseInt(userscore.textContent) == 5){
+        result.textContent = "You Won!! Congratulations!";
+        userscore.textContent = 0;
+        computerscore.textContent = 0;
+    }
+    else if(parseInt(computerscore.textContent)==5){
+        result.textContent = "Better Luck Next Time!";
+        userscore.textContent = 0;
+        computerscore.textContent = 0;
+    }
+
+}
+
+rock.addEventListener('click',function(){
+    getPlayerChoice='ROCK';
+    Game(getPlayerChoice);
 })
 paper.addEventListener('click',function(){
     getPlayerChoice='PAPER';
-    outcome = playRound(getPlayerChoice,getComputerChoice());
-    result.textContent = outcome;
-    if(outcome.includes('Lose!'))
-        computerscore.textContent = parseInt(computerscore.textContent)+1;
-    if(outcome.includes('Won!'))
-        userscore.textContent = parseInt(userscore.textContent)+1;
+    Game(getPlayerChoice);
 })
 scissor.addEventListener('click',function(){
     getPlayerChoice='SCISSORS';
-    outcome = playRound(getPlayerChoice,getComputerChoice());
-    result.textContent = outcome;
-    if(outcome.includes('Lose!'))
-        computerscore.textContent = parseInt(computerscore.textContent)+1;
-    if(outcome.includes('Won!'))
-        userscore.textContent = parseInt(userscore.textContent)+1;
+    Game(getPlayerChoice);
 })
 
 const reset = document.querySelector('#reset');
@@ -74,3 +81,5 @@ reset.addEventListener('click',function(){
     computerscore.textContent = 0;
     result.textContent = '';
 })
+
+
