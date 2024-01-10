@@ -5,16 +5,35 @@
         <title>Rock Paper Scissors</title>
         <script src="js/script.js" defer>
         </script>
+        <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
+        <Section class="header">
+            Welcome To Rock Paper & Scissors
+        </Section>
         <section class="scoreboard">
-            <div class="UserScore">0</div>
-            <div class="ComputerScore">0</div>
+            <div class="User">
+                <div class="UserScore">0</div>
+                User Score
+            </div>
+            <div class="Computer">
+                <div class="ComputerScore">0</div>
+                Computer Score
+            </div>
         </section>
         <section class="options">
-            <button id="rock">Rock</button>
-            <button id="paper">Paper</button>
-            <button id="scissor">Scissors</button>
+            <button id="rock">
+                <img src="img/rock.png">
+                Rock
+            </button>
+            <button id="paper">
+                <img src="img/hand-paper.png">
+                Paper
+            </button>
+            <button id="scissor">
+                <img src="img/scissors.png">
+                Scissors
+            </button>
         </section>
         <section class="result">
             <div id="result"></div>
